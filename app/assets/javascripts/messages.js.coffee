@@ -7,5 +7,5 @@ $ ->
     if message
       appendMessage event.target.message.value
     else
-      alert("Message can't be blank")
+      toastr.error("Message can't be blank")
     false
