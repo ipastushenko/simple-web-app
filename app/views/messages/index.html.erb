@@ -1,6 +1,7 @@
 <div class="content">
-  <%= text_field_tag :message %>
-  <%= button_tag "Add message", id: "add-message-button" %>
-  <ul id="list-messages">
-  </ul>
+  <%= form_tag "/", remote: true, id: "add-message-form" do %>
+    <%= text_field_tag :message %>
+    <%= submit_tag "Add message" %>
+  <% end %>
+  <ul id="list-messages"></ul>
 </div>
