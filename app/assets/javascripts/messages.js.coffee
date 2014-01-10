@@ -1,7 +1,7 @@
 appendMessage = (message) ->
   $.ajax(
     url: "/messages/message_template?message=" + message
-    type: 'POST'
+    type: "POST"
   ).done (html) ->
     $("#list-messages").append html
 
