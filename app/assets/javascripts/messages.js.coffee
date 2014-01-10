@@ -4,7 +4,12 @@ appendMessage = (message) ->
     data: { message: message }
     type: "POST"
   ).done (html) ->
-    $("#list-messages").append html
+    $("#list-messages").prepend html
+    updateRemoveEvent()
+
+updateRemoveEvent = () ->
+  $(".remove-message").click (event) ->
+    event.target.parentElement.remove()
 
 $ ->
   $("#add-message-form").submit (event) ->
