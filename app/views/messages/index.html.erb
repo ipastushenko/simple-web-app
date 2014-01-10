@@ -1,6 +1,7 @@
 <div class="content">
   <%= form_tag "/", remote: true, id: "add-message-form" do %>
-    <%= text_field_tag :message %>
+    <%= label_tag "Message"%>
+    <%= text_field_tag :message, nil, autofocus: true %>
     <%= submit_tag "Add message" %>
   <% end %>
   <ul id="list-messages"></ul>

@@ -3,5 +3,9 @@ appendMessage = (message) ->
 
 $ ->
   $("#add-message-form").submit (event) ->
-    appendMessage event.target.message.value
+    message = event.target.message.value.trim()
+    if message
+      appendMessage event.target.message.value
+    else
+      alert("Message can't be blank")
     false
