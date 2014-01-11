@@ -3,9 +3,12 @@ appendMessage = (message) ->
     url: "/messages/message_template"
     data: { message: message }
     type: "POST"
-  ).done (html) ->
-    $("#list-messages").prepend html
-    updateRemoveEvent()
+  ).done (data) ->
+    if data.success
+      $("#list-messages").prepend data.html
+      updateRemoveEvent()
+    else
+      toastr.error data.error
 
 updateRemoveEvent = () ->
   $(".remove-message").click (event) ->
@@ -17,5 +20,5 @@ $ ->
     if message
       appendMessage event.target.message.value
     else
-      toastr.error("Message can't be blank")
+      toastr.error "Message can't be blank"
     false
