@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-
   # GET /
   def index
   end
