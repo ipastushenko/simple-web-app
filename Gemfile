@@ -45,3 +45,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'toastr-rails'
+
+gem 'mysql2'
+
+gem 'devise'

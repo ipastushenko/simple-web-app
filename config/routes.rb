@@ -1,4 +1,5 @@
 SimpleWebApp::Application.routes.draw do
+  devise_for :users
   root 'messages#index'
   post 'messages/message_template' => 'messages#message_template'
 
