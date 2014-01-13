@@ -1,7 +1,6 @@
 SimpleWebApp::Application.routes.draw do
   devise_for :users
   root 'messages#index'
-  post 'messages/message_template' => 'messages#message_template'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
