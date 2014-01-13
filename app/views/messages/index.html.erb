@@ -1,9 +1,1 @@
-<div class="content">
-  <%= form_tag "/", remote: true, id: "add-message-form" do %>
-    <%= label_tag "Message"%>
-    <%= text_field_tag :message, nil, autofocus: true %>
-    <%= submit_tag "Add message" %>
-  <% end %>
-  <ul id="list-messages"></ul>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-</div>
+<div class="content" ng-view></div>

@@ -1,5 +1,8 @@
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require toastr
+// require turbolinks
+//= require angular
+//= require angular-route
+//= require app/main
 //= require_tree .

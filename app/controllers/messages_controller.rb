@@ -7,11 +7,7 @@ class MessagesController < ApplicationController
   def message_template
     if params[:message].try(:present?)
       render json: { 
-        success: true,
-        html: render_to_string(
-          partial: 'message_template', 
-          locals: { message: params[:message] }
-        )
+        success: true
       }
     else
       render json: {
