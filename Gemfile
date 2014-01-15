@@ -45,3 +45,7 @@ gem 'mysql2'
 gem 'devise'
 
 gem 'angularjs-rails'
+
+group :production do
+  gem 'pg'
+end
