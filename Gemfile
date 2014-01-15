@@ -40,7 +40,9 @@ end
 
 gem 'toastr-rails'
 
-gem 'mysql2'
+group :development do
+  gem 'mysql2'
+end
 
 gem 'devise'
 
