@@ -3,6 +3,6 @@
 @simpleWebApp.config(['$routeProvider', ($routeProvider) ->
   $routeProvider.otherwise({
     templateUrl: '/assets/home.html',
-    controller: 'MessagesCtrl'
+    controller: 'MessageCtrl'
   })
 ])

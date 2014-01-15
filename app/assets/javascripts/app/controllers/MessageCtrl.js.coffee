@@ -1,4 +1,4 @@
-@simpleWebApp.controller 'MessagesCtrl', ['$scope', ($scope) ->
+@simpleWebApp.controller 'MessageCtrl', ['$scope', ($scope) ->
   $scope.messages = []
 
   $scope.add = (message) ->
