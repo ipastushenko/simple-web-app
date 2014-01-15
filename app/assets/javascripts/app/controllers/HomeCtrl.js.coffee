@@ -1,9 +1,7 @@
-@simpleWebApp.controller 'HomeCtrl', ['$scope', ($scope) ->
+@simpleWebApp.controller 'MessagesCtrl', ['$scope', ($scope) ->
   $scope.messages = []
 
   $scope.add = (message) ->
-    if message
-      message = message.trim()
     if message
       $scope.messages.unshift(message)
     else
