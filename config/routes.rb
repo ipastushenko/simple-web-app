@@ -4,4 +4,6 @@ SimpleWebApp::Application.routes.draw do
   scope :api, format: false, defaults: { format: 'json' } do
     post 'message/create', to: 'message#create'
   end
+
+  devise_for :users
 end
