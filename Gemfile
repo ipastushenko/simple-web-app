@@ -17,6 +17,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'toastr-rails'
 gem 'angularjs-rails'
+gem 'angular-ui-bootstrap-rails'
 
 group :doc do
   gem 'sdoc', require: false

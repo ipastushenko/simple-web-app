@@ -1,4 +1,4 @@
-@simpleWebApp = angular.module('simpleWebApp', ['ngRoute'])
+@simpleWebApp = angular.module('simpleWebApp', ['ngRoute', 'ui.bootstrap'])
 
 @simpleWebApp.config(["$httpProvider", (provider) ->
   provider.defaults.headers
@@ -16,5 +16,12 @@
   {
     restrict: 'E',
     templateUrl: "<%= asset_path('message.html') %>"
+  }
+)
+
+@simpleWebApp.directive('authorization', () ->
+  {
+    restrict: 'E',
+    templateUrl: "<%= asset_path('authorization.html') %>"
   }
 )
