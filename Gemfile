@@ -24,7 +24,12 @@ end
 
 group :development do
   gem 'mysql2'
+
+  # Rails Panel
   gem 'meta_request'
+
+  # Email letter opener
+  gem 'letter_opener'
 end
 
 group :production do
