@@ -31,6 +31,8 @@ group :development do
 
   # Email letter opener
   gem 'letter_opener'
+
+  gem 'pry'
 end
 
 group :production do

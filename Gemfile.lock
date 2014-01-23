@@ -35,6 +35,7 @@ GEM
       sass (~> 3.2)
     builder (3.1.4)
     callsite (0.0.11)
+    coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -70,6 +71,7 @@ GEM
       callsite
       rack-contrib
       railties
+    method_source (0.8.2)
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.2)
@@ -77,6 +79,10 @@ GEM
     orm_adapter (0.4.0)
     pg (0.17.1)
     polyglot (0.3.3)
+    pry (0.9.12.4)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     rack (1.5.2)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
@@ -111,6 +117,7 @@ GEM
     sdoc (0.3.20)
       json (>= 1.1.3)
       rdoc (~> 3.10)
+    slop (3.4.7)
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -151,6 +158,7 @@ DEPENDENCIES
   meta_request
   mysql2
   pg
+  pry
   rails (= 4.0.0)
   rails_12factor
   sass-rails (~> 4.0.0)
