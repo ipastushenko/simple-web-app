@@ -4,7 +4,6 @@
 // require turbolinks
 //= require angular
 //= require angular-route
-//= require angular-ui-bootstrap
 //= require angular-ui-bootstrap-tpls
 //= require app/main
 //= require_tree .
