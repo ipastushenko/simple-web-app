@@ -3,7 +3,9 @@
   '$modalInstance',
   ($scope, $modalInstance) ->
     $scope.sign_in = () ->
-      toastr.info 'Autorization'
+      alert "sign in"
+    $scope.cancel = () ->
+      alert "cancel"
 ]
 
 @simpleWebApp.controller 'AuthorizationCtrl', [
