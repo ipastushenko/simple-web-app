@@ -1,25 +1,9 @@
 <script type="text/ng-template" id="sign_in.html">
-  <form class="form-horizontal" role="form">
-    <div class="form-group">
-      <label for="input-email" class="col-sm-2 control-label">Email</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control" id="input-email" placeholder="Enter email">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="input-password" class="col-sm-2 control-label">Password</label>
-      <div class="col-sm-10">
-        <input type="password" class="form-control" id="input-password" placeholder="Password">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-8 col-sm-2">
-        <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
-      </div>
-      <div class="col-sm-2">
-        <button type="submit" class="btn btn-primary" ng-click="sign_in()">Sign in</button>
-      </div>
-    </div>
+  <form class="signin-form" role="form">
+    <input type="email" class="form-control" id="input-email" placeholder="Enter email">
+    <input type="password" class="form-control" id="input-password" placeholder="Password">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button type="submit" class="btn btn-primary" ng-click="sign_in()">Sign in</button>
   </form>
 </script>
 <button class="btn btn-default" ng-click="sign_in()">Sign in</button>
