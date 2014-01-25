@@ -18,7 +18,8 @@
       singInModal = $modal.open({
         templateUrl: 'sign_in.html',
         controller: 'SignInCtrl',
-        backdrop: 'static'
+        backdrop: 'static',
+        windowClass: 'signin'
       })
 ]
 
