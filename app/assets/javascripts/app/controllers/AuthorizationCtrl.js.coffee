@@ -21,5 +21,17 @@
         backdrop: 'static',
         windowClass: 'signin'
       })
+    $scope.init = () ->
+      $http.get(
+        "/api/current_user"
+      ).success( (data, status) ->
+        if !data.success
+          $scope.sign_in()
+      ).error( (data, status) ->
+        if status == 401
+          $scope.sign_in()
+        else
+          toastr.error "Request failed"
+      )
 ]
 

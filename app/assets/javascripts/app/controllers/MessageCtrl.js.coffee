@@ -11,8 +11,9 @@
           $scope.messages.unshift(message)
         else
           toastr data.error
-      ).error () ->
+      ).error( () ->
         toastr.error "Request failed"
+      )
     else
       toastr.error "Message can't be blank"
     false

@@ -1,8 +1,26 @@
 @simpleWebApp = angular.module('simpleWebApp', ['ngRoute', 'ui.bootstrap'])
 
-@simpleWebApp.config(["$httpProvider", (provider) ->
-  provider.defaults.headers
+@simpleWebApp.factory('HttpInterceptor', ($q) ->
+  {
+    'request': (config) ->
+      config || $q.when(config)
+    
+    'requestError': (rejection) ->
+      $q.reject(rejection)
+
+    'response': (response) ->
+      response || $q.when(response)
+
+    'responseError': (rejection) ->
+      $q.reject(rejection)
+  }
+)
+
+@simpleWebApp.config(["$httpProvider", ($httpProvider) ->
+  $httpProvider.defaults.headers
     .common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+
+    $httpProvider.interceptors.push('HttpInterceptor')
 ])
 
 @simpleWebApp.config(['$routeProvider', ($routeProvider) ->
