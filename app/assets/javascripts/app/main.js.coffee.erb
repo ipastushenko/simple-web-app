@@ -17,10 +17,7 @@
 )
 
 @simpleWebApp.config(["$httpProvider", ($httpProvider) ->
-  $httpProvider.defaults.headers
-    .common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
-
-    $httpProvider.interceptors.push('HttpInterceptor')
+  $httpProvider.interceptors.push('HttpInterceptor')
 ])
 
 @simpleWebApp.config(['$routeProvider', ($routeProvider) ->

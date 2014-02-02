@@ -21,6 +21,7 @@ gem 'toastr-rails'
 
 # JSON
 gem 'jbuilder', '~> 1.2'
+gem 'angular_rails_csrf'
 
 group :development do
   # Database

@@ -1,11 +1,19 @@
 @simpleWebApp.controller 'SignInCtrl', [
   '$scope',
+  '$http',
   '$modalInstance',
-  ($scope, $modalInstance) ->
-    $scope.sign_in = () ->
-      alert "sign in"
+  ($scope, $http, $modalInstance) ->
+    $scope.sign_in = (user) ->
+      $http.post(
+        '/api/signin',
+        {user: {email: user.email, password: user.password}}
+      ).success( (data) ->
+        $modalInstance.close(data.user)
+      ).error( () ->
+        toastr.error "Request failed"
+      )
     $scope.cancel = () ->
-      alert "cancel"
+      $modalInstance.dismiss('cancel')
 ]
 
 @simpleWebApp.controller 'AuthorizationCtrl', [
@@ -21,6 +29,15 @@
         backdrop: 'static',
         windowClass: 'signin'
       })
+    $scope.sign_out = () ->
+      $http.delete(
+        "/api/signout"
+      ).success( () ->
+        toastr.error "Logout"
+      ).error( () ->
+        toastr.error "Request failed"
+      )
+
     $scope.init = () ->
       $http.get(
         "/api/current_user"

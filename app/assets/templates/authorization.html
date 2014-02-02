@@ -1,9 +1,24 @@
 <script type="text/ng-template" id="sign_in.html">
   <form class="signin-form" role="form">
-    <input type="email" class="form-control" id="input-email" placeholder="Enter email">
-    <input type="password" class="form-control" id="input-password" placeholder="Password">
-    <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
-    <button type="submit" class="btn btn-primary" ng-click="sign_in()">Sign in</button>
+    <input 
+      type="email" 
+      class="form-control"
+      placeholder="Enter email"
+      ng-model="user.email"
+    >
+    <input 
+      type="password"
+      class="form-control"
+      placeholder="Password"
+      ng-model="user.password"
+    >
+    <button type="button" class="btn btn-default"ng-click="cancel()">
+      Cancel
+    </button>
+    <button type="submit" class="btn btn-primary" ng-click="sign_in(user)">
+      Sign in
+    </button>
   </form>
 </script>
 <button class="btn btn-default" ng-click="sign_in()">Sign in</button>
+<button class="btn btn-default" ng-click="sign_out()">Sign out</button>
