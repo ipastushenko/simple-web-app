@@ -7,7 +7,7 @@ class SessionsController < Devise::SessionsController
       recall: "#{controller_path}#failure"
     )
 
-    render status: 200, json: { 
+    render json: { 
       success: true,
       user: current_user
     }
@@ -20,7 +20,7 @@ class SessionsController < Devise::SessionsController
     )
     sign_out
 
-    render status: 200, json: { 
+    render json: { 
       success: true
     }
   end
@@ -31,15 +31,35 @@ class SessionsController < Devise::SessionsController
       recall: "#{controller_path}#failure"
     )
 
-    render status: 200, json: { 
+    render json: { 
       success: true,
       user: current_user
     }
   end
 
   def failure
-    render status: 401, json: { 
+    render json: { 
       success: false
     }
+  end
+
+  def require_no_authentication
+    assert_is_devise_resource!
+    return unless is_navigational_format?
+    no_input = devise_mapping.no_input_strategies
+
+    authenticated = if no_input.present?
+      args = no_input.dup.push :scope => resource_name
+      warden.authenticate?(*args)
+    else
+      warden.authenticated?(resource_name)
+    end
+
+    if authenticated && warden.user(resource_name)
+      render json: { 
+        success: true,
+        user: current_user
+      }
+    end
   end
 end
