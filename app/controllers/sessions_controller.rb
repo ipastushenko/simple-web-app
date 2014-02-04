@@ -18,10 +18,10 @@ class SessionsController < Devise::SessionsController
       scope: resource_name, 
       recall: "#{controller_path}#failure"
     )
-    result = sign_out
+    sign_out
 
     render json: { 
-      success: result
+      success: true
     }
   end
 
