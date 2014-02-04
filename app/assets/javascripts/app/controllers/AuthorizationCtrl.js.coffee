@@ -6,9 +6,9 @@
     $scope.sign_in = (user) ->
       $http.post(
         '/api/signin',
-        {user: {email: user.email, password: user.password}}
+        {user: user}
       ).success( (data) ->
-        $modalInstance.close(data.user)
+        $modalInstance.close()
       ).error( () ->
         toastr.error "Request failed"
       )
