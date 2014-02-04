@@ -8,7 +8,10 @@
         '/api/signin',
         {user: user}
       ).success( (data) ->
-        $modalInstance.close()
+        if data.success
+          $modalInstance.close(data)
+        else
+          toastr.error "Invalid email or password"
       ).error( () ->
         toastr.error "Request failed"
       )
@@ -23,17 +26,25 @@
   '$templateCache',
   ($scope, $http, $modal, $templateCache) ->
     $scope.sign_in = () ->
-      singInModal = $modal.open({
+      signInModal = $modal.open({
         templateUrl: 'sign_in.html',
         controller: 'SignInCtrl',
         backdrop: 'static',
         windowClass: 'signin'
       })
+      signInModal.result.then( (data) ->
+        if data.success
+          toastr.info "Welcome, #{ data.user.email }"
+      )
+
     $scope.sign_out = () ->
       $http.delete(
         "/api/signout"
-      ).success( () ->
-        toastr.error "Logout"
+      ).success( (data) ->
+        if data.success
+          toastr.info "Good bye!"
+        else
+          toastr.error "You are not logged!"
       ).error( () ->
         toastr.error "Request failed"
       )

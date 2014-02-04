@@ -1,10 +1,10 @@
-@simpleWebApp.controller 'MessageCtrl', ['$scope', '$http', ($scope, $http) ->
+@simpleWebApp.controller 'MessagesCtrl', ['$scope', '$http', ($scope, $http) ->
   $scope.messages = []
 
   $scope.add = (message) ->
     if message
       $http.post(
-        "/api/message/create",
+        "/api/messages/create",
         { message: message }
       ).success( (data) ->
         if data.success

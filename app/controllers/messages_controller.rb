@@ -1,4 +1,4 @@
-class MessageController < ApplicationController
+class MessagesController < ApplicationController
   respond_to :json
 
   # POST message/create
