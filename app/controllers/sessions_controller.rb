@@ -4,31 +4,34 @@ class SessionsController < Devise::SessionsController
   def create
     self.resource = warden.authenticate!(
       scope: resource_name, 
-      recall: "#{controller_path}#failure"
+      recall: "#{controller_path}#create_failure"
     )
 
+    user = current_user
     render json: { 
       success: true,
-      user: current_user
+      user: user,
+      info: "Welcome, #{ user.email }"
     }
   end
 
   def destroy
     warden.authenticate!(
       scope: resource_name, 
-      recall: "#{controller_path}#failure"
+      recall: "#{controller_path}#destroy_failure"
     )
     sign_out
 
     render json: { 
-      success: true
+      success: true,
+      info: "Good bye!"
     }
   end
 
   def show_current_user
     warden.authenticate!(
       scope: resource_name, 
-      recall: "#{controller_path}#failure"
+      recall: "#{controller_path}#show_user_failure"
     )
 
     render json: { 
@@ -37,7 +40,21 @@ class SessionsController < Devise::SessionsController
     }
   end
 
-  def failure
+  def create_failure
+    render json: {
+      success: false,
+      error: "Invalid email or password"
+    }
+  end
+
+  def destroy_failure
+    render json: {
+      success: false,
+      error: "You are not logged!"
+    }
+  end
+
+  def show_user_failure
     render json: { 
       success: false
     }
@@ -57,8 +74,8 @@ class SessionsController < Devise::SessionsController
 
     if authenticated && warden.user(resource_name)
       render json: { 
-        success: true,
-        user: current_user
+        success: false,
+        error: "You already logged as #{ current_user.email }"
       }
     end
   end

@@ -11,7 +11,7 @@
         if data.success
           $modalInstance.close(data)
         else
-          toastr.error "Invalid email or password"
+          toastr.error data.error
       ).error( () ->
         toastr.error "Request failed"
       )
@@ -34,7 +34,7 @@
       })
       signInModal.result.then( (data) ->
         if data.success
-          toastr.info "Welcome, #{ data.user.email }"
+          toastr.info data.info
       )
 
     $scope.sign_out = () ->
@@ -42,13 +42,14 @@
         "/api/signout"
       ).success( (data) ->
         if data.success
-          toastr.info "Good bye!"
+          toastr.info data.info
         else
-          toastr.error "You are not logged!"
+          toastr.error data.error
       ).error( () ->
         toastr.error "Request failed"
       )
 
+    #TODO
     $scope.init = () ->
       $http.get(
         "/api/current_user"
