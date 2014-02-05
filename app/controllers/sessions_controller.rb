@@ -1,6 +1,7 @@
 class SessionsController < Devise::SessionsController
   respond_to :json
 
+  # POST /api/signin
   def create
     self.resource = warden.authenticate!(
       scope: resource_name, 
@@ -15,6 +16,7 @@ class SessionsController < Devise::SessionsController
     }
   end
 
+  # DELETE /api/signout
   def destroy
     warden.authenticate!(
       scope: resource_name, 
@@ -28,6 +30,7 @@ class SessionsController < Devise::SessionsController
     }
   end
 
+  # GET /api/current_user
   def show_current_user
     warden.authenticate!(
       scope: resource_name, 
@@ -42,10 +45,11 @@ class SessionsController < Devise::SessionsController
     }
   end
 
+  # ERRORS
   def create_failure
     render json: {
       success: false,
-      error: "Invalid email or password"
+      error: "Invalid email or password!"
     }
   end
 
@@ -63,6 +67,14 @@ class SessionsController < Devise::SessionsController
     }
   end
 
+  def confirm_failure
+    render json: {
+      success: false,
+      error: "You are not confirmed email!"
+    }
+  end
+
+  # callback for create function
   def require_no_authentication
     assert_is_devise_resource!
     return unless is_navigational_format?
