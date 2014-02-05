@@ -34,9 +34,11 @@ class SessionsController < Devise::SessionsController
       recall: "#{controller_path}#show_user_failure"
     )
 
+    user = current_user
     render json: { 
       success: true,
-      user: current_user
+      user: user,
+      info: "Welcome, #{ user.email }"
     }
   end
 
@@ -56,7 +58,8 @@ class SessionsController < Devise::SessionsController
 
   def show_user_failure
     render json: { 
-      success: false
+      success: false,
+      info: "Welcome to chess portal."
     }
   end
 

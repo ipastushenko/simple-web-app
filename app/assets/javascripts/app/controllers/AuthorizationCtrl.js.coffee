@@ -49,18 +49,16 @@
         toastr.error "Request failed"
       )
 
-    #TODO
     $scope.init = () ->
       $http.get(
         "/api/current_user"
       ).success( (data, status) ->
-        if !data.success
-          $scope.sign_in()
-      ).error( (data, status) ->
-        if status == 401
-          $scope.sign_in()
+        if data.success
+          toastr.info data.info
         else
-          toastr.error "Request failed"
+          toastr.info data.info
+      ).error( () ->
+        toastr.error "Request failed"
       )
 ]
 
