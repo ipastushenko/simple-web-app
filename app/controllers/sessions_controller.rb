@@ -70,7 +70,7 @@ class SessionsController < Devise::SessionsController
   def confirm_failure
     render json: {
       success: false,
-      error: "You are not confirmed email!"
+      error: "You are not confirmed email! <confirmation ng-controller='ConfirmationCtrl'></confirmation>"
     }
   end
 
